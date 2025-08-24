@@ -50,5 +50,5 @@ nix run github:tofu-salad/emby-server-flake
 # Credits
 Big thanks to [@numkem](https://emby.media/community/index.php?/topic/109786-live-tv-broken-on-47x/#comment-116375) from the emby.media community forum.
 
-NixOS maintainers for Jellyfine service module available [here].(https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/misc/jellyfin.nix).
+NixOS maintainers for Jellyfin service module available [here].(https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/misc/jellyfin.nix).
 

@@ -14,7 +14,12 @@ let
     mkOption
     mkPackageOption
     ;
-  inherit (lib.types) str path bool;
+  inherit (lib.types)
+    str
+    path
+    bool
+    package
+    ;
   cfg = config.services.emby;
 in
 {
@@ -22,7 +27,10 @@ in
     services.emby = {
       enable = mkEnableOption "Emby Media Server";
 
-      package = mkPackageOption pkgs "emby" { };
+      package = mkOption {
+        type = package;
+        description = "The Emby package to use.";
+      };
 
       user = mkOption {
         type = str;
