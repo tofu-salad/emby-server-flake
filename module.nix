@@ -23,7 +23,7 @@ in
     services.emby = {
       enable = mkEnableOption "Emby Media Server";
 
-      package = mkPackageOption pkgs "emby-server" { };
+      package = mkPackageOption pkgs "emby" { };
 
       user = mkOption {
         type = str;
