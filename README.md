@@ -40,12 +40,12 @@ This Nix flake provides:
 ```
 ### Build or run the wrapped Emby package directly
 ```nix
-nix build github:youruser/emby-flake
+nix build github:tofu-salad/emby-server-flake
 ./result/bin/emby
 ```
 ### Or run directly with:
 ```nix
-nix run github:youruser/emby-flake
+nix run github:tofu-salad/emby-server-flake
 ```
 # Credits
 Big thanks to [@numkem](https://emby.media/community/index.php?/topic/109786-live-tv-broken-on-47x/#comment-116375) from the emby.media community forum.
