@@ -7,7 +7,12 @@
     { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
       emby = pkgs.stdenv.mkDerivation rec {
         pname = "emby-server";
         version = "4.8.11.0";
