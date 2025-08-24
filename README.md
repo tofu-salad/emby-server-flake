@@ -38,17 +38,17 @@ This Nix flake provides:
   # services.emby.dataDir = "/var/lib/emby/ProgramData-Server";
 }
 ```
-### Build the wrapped Emby package directly
+### Build the wrapped Emby package
 ```nix
 nix build github:tofu-salad/emby-server-flake
 ./result/bin/emby
 ```
-### Or run directly with (requires sudo):
+### Or run directly (requires sudo)
 ```nix
 nix run github:tofu-salad/emby-server-flake
 ```
 # Credits
 Big thanks to [@numkem](https://emby.media/community/index.php?/topic/109786-live-tv-broken-on-47x/#comment-116375) from the emby.media community forum.
-NixOS maintainers for the old official Emby service module available [here](https://github.com/NixOS/nixpkgs/blob/ebbeae56bdce0226ca66414160345ccdf457284b/nixos/modules/services/misc/emby.nix).
-  https://github.com/tofu-salad/emby-server-flake
+
+NixOS maintainers for Jellyfine service module available [here].(https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/misc/jellyfin.nix).
 
