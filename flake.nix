@@ -95,6 +95,15 @@
           # Also patch other binaries
           find $out/bin -name "*.so" -exec autoPatchelf {} \; || true
         '';
+
+        meta = with pkgs.lib; {
+          description = "Emby Media Server";
+          homepage = "https://emby.media/";
+          license = licenses.unfree;
+          maintainers = [ ];
+          platforms = [ "x86_64-linux" ];
+          mainProgram = "emby";
+        };
       };
     in
     {

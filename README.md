@@ -30,13 +30,12 @@ This Nix flake provides:
 ```
 ### Enable Emby in your NixOS configuration (configuration.nix)
 ```nix
-{
-  services.emby.enable = true;
-  # Optional overrides:
-  # services.emby.user = "emby";
-  # services.emby.group = "emby";
-  # services.emby.dataDir = "/var/lib/emby/ProgramData-Server";
-}
+  services.emby = {
+    enable = true;
+    package = inputs.emby-flake.packages.x86_64-linux.default;
+    services.emby.dataDir # Base data directory for Emby program data (default: "/var/lib/emby") # (optional)
+    services.emby.openFirewall # (optional)
+  };
 ```
 ### Build the wrapped Emby package
 ```nix
