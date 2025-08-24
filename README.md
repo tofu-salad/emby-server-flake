@@ -38,12 +38,12 @@ This Nix flake provides:
   # services.emby.dataDir = "/var/lib/emby/ProgramData-Server";
 }
 ```
-### Build or run the wrapped Emby package directly
+### Build the wrapped Emby package directly
 ```nix
 nix build github:tofu-salad/emby-server-flake
 ./result/bin/emby
 ```
-### Or run directly with:
+### Or run directly with (requires sudo):
 ```nix
 nix run github:tofu-salad/emby-server-flake
 ```

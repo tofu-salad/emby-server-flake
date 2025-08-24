@@ -54,6 +54,10 @@
     in
     {
       packages.${system}.default = emby;
+      apps.${system}.default = {
+        type = "app";
+        program = "${self.packages.${system}.default}/bin/emby";
+      };
       nixosModules.default = import ./module.nix;
     };
 }
