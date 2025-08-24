@@ -11,7 +11,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
 
-      emby = pkgs.stdenv.mkDerivation rec {
+      emby-server = pkgs.stdenv.mkDerivation rec {
         pname = "emby-server";
         version = "4.8.11.0";
 
