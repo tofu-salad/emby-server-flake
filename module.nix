@@ -4,9 +4,18 @@
   lib,
   ...
 }:
+
 with lib;
 
 let
+  inherit (lib)
+    mkIf
+    getExe
+    mkEnableOption
+    mkOption
+    mkPackageOption
+    ;
+  inherit (lib.types) str path;
   cfg = config.services.emby;
 in
 {
@@ -14,20 +23,22 @@ in
     services.emby = {
       enable = mkEnableOption "Emby Media Server";
 
+      package = mkPackageOption pkgs "emby-server" { };
+
       user = mkOption {
-        type = types.str;
+        type = str;
         default = "emby";
         description = "User account under which Emby runs.";
       };
 
       group = mkOption {
-        type = types.str;
+        type = str;
         default = "emby";
         description = "Group under which Emby runs.";
       };
 
       dataDir = mkOption {
-        type = types.path;
+        type = path;
         default = "/var/lib/emby/ProgramData-Server";
         description = "Location where Emby stores its data.";
       };
@@ -39,6 +50,7 @@ in
       description = "Emby Media Server";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
+
       preStart = ''
         if [ -d ${cfg.dataDir} ]; then
           for plugin in ${cfg.dataDir}/plugins/*; do
@@ -57,7 +69,7 @@ in
         User = cfg.user;
         Group = cfg.group;
         PermissionsStartOnly = "true";
-        ExecStart = "${pkgs.emby-server}/bin/emby -programdata ${cfg.dataDir}";
+        ExecStart = "${getExe cfg.package} -programdata ${cfg.dataDir}";
         Restart = "on-failure";
       };
     };
@@ -65,13 +77,13 @@ in
     users.users = mkIf (cfg.user == "emby") {
       emby = {
         group = cfg.group;
-        uid = config.ids.uids.emby;
+        isSystemUser = true;
       };
     };
 
     users.groups = mkIf (cfg.group == "emby") {
       emby = {
-        gid = config.ids.gids.emby;
+        isSystemGroup = true;
       };
     };
   };
