@@ -33,7 +33,6 @@ This Nix flake provides:
 { inputs, ... }:
   services.emby = {
     enable = true;
-    package = inputs.emby-flake.packages.x86_64-linux.default;
     dataDir = "/mnt/media/emby-data"; # (optional) Base data directory for Emby program data (default: "/var/lib/emby")
     openFirewall = true;              # (optional) Automatically open firewall ports 8096 (HTTP) and 8920 (HTTPS)
   };
