@@ -117,6 +117,16 @@
         type = "app";
         program = "${self.packages.${system}.default}/bin/emby";
       };
-      nixosModules.default = import ./module.nix;
+      nixosModules.default =
+        {
+          config,
+          pkgs,
+          lib,
+          ...
+        }:
+        import ./module.nix {
+          inherit config pkgs lib;
+          embyPackage = emby;
+        };
     };
 }

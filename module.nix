@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  embyPackage,
   ...
 }:
 
@@ -29,6 +30,7 @@ in
 
       package = mkOption {
         type = package;
+        default = embyPackage;
         description = "The Emby package to use.";
       };
 
